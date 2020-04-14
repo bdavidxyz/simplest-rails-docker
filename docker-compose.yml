@@ -5,7 +5,8 @@ services:
   db:
     image: postgres
     volumes:
-      - 'pgdata:/var/lib/postgresql/data'
+      - pgdata:/var/lib/postgresql/data
+      - '.dockerdev/init.sql:/docker-entrypoint-initdb.d/init.sql'
       - bundle:/usr/local/bundle
     ports:
       - '5432:5432'
@@ -36,4 +37,3 @@ services:
 volumes:
   bundle:
   pgdata:
-    external: true
