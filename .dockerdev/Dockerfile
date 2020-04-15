@@ -42,8 +42,8 @@ RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrad
 # RUN apt-get update -qq && apt-get install -y postgresql-client
 RUN mkdir /railsapp
 WORKDIR /railsapp
-COPY Gemfile /railsapp/Gemfile
-COPY Gemfile.lock /railsapp/Gemfile.lock
+COPY .dockerdev/Gemfile /railsapp/Gemfile
+COPY .dockerdev/Gemfile.lock /railsapp/Gemfile.lock
 RUN bundle install
 COPY . /railsapp
 
