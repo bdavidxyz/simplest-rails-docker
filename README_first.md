@@ -30,7 +30,23 @@ Flag explanations:
 
 ### 3. Adapt database.yml and webpacker.yml to Docker configuration
 
+Open config/database.yml
+```
+default: &default
+  host: db # <---- add this property
+  username: postgres # <---- add this property
+```
 
+Open config/webpacker.yml
+```
+development:
+ (...)
+  dev_server:
+    https: false
+    host: webpack # <---- change this property, was localhost
+    port: 3035
+    public: webpack:3035 # <---- change this property, was localhost:3035
+```
 
 ## Restart from scratch
 
