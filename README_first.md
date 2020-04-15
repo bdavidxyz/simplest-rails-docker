@@ -9,6 +9,10 @@ Rails, Database and webpacker are the 3 mandatory services to get things works.
 ## Steps to reproduce
 
 ### 1. Build images
+Run :
+```
+docker-compose build
+```
 
 ### 2. Build project
 
@@ -24,6 +28,9 @@ Flag explanations:
 * **--force** - Tells rails to overwrite existing files, such as Gemfile.
 * **--database=postgresql** - Tells Rails to default our db config to use postgres.
 
+### 3. Adapt database.yml and webpacker.yml to Docker configuration
+
+
 
 ## Restart from scratch
 
@@ -37,6 +44,6 @@ docker volume prune
 
 reset files
 ```
-rm -rf -v !(".dockerenv"|".gitignore"|"README_first.md"|"docker-compose.yml") && rm .browserslistrc && rm .ruby-version
+rm -rf -v !("Dockerfile"|".dockerenv"|".gitignore"|"README_first.md"|"docker-compose.yml") && rm .browserslistrc && rm .ruby-version
 ```
 

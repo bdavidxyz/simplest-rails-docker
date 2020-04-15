@@ -17,6 +17,7 @@ services:
     volumes:
       - '.:/railsapp'
       - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
     ports:
       - '3035:3035'
 
@@ -27,6 +28,7 @@ services:
       - '.:/railsapp'
       - .dockerdev/.bashrc:/root/.bashrc:ro
       - bundle:/usr/local/bundle
+      - node_modules:/app/node_modules
     ports:
       - '3000:3000'
     depends_on:
@@ -36,3 +38,4 @@ services:
 volumes:
   bundle:
   pgdata:
+  node_modules:
