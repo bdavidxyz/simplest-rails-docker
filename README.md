@@ -8,6 +8,19 @@ Rails, Database and webpacker are the 3 mandatory services to get things works.
 
 ## Steps to reproduce
 
+### 0. Prerequisites
+
+```
+$> docker -v
+Docker version 17.12.0-ce
+
+$> docker-compose -v
+docker-compose version 1.18.0
+```
+
+Any upper version should work.
+
+
 ### 1. Build images
 Run :
 ```
@@ -18,14 +31,14 @@ docker-compose build
 
 Run :
 ```
-docker-compose run --no-deps web rails new . --force --database=postgresql
+docker-compose run --no-deps web rails new . --skip --database=postgresql
 ```
 
 This will run the `rails new` command on our `web` service defined in docker-compose.yml.
 
 Flag explanations:
 * **--no-deps** - Tells `docker-compose run` not to start any of the services in `depends_on`.
-* **--force** - Tells rails to overwrite existing files, such as Gemfile.
+* **--skip** - Tells rails NOT to overwrite existing files, such as README or .gitignore
 * **--database=postgresql** - Tells Rails to default our db config to use postgres.
 
 ### 3. Adapt database.yml and webpacker.yml to Docker configuration
