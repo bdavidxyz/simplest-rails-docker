@@ -96,6 +96,6 @@ docker volume prune
 
 reset files
 ```
-rm -rf -v !("Dockerfile"|".dockerenv"|".gitignore"|"README_first.md"|"docker-compose.yml") && rm .browserslistrc && rm .ruby-version
+rm -rf -v !("Dockerfile"|".dockerenv"|".gitignore"|"README.md"|"docker-compose.yml") && rm .browserslistrc && rm .ruby-version
 ```
 
