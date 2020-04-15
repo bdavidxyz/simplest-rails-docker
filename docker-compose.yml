@@ -21,7 +21,7 @@ services:
       - bundle:/usr/local/bundle
       - node_modules:/app/node_modules
     ports:
-      - '3035:3035'
+      - '127.0.0.1:3035:3035'
 
   web_srv:
     build: .
@@ -31,7 +31,7 @@ services:
       - bundle:/usr/local/bundle
       - node_modules:/app/node_modules
     ports:
-      - '3000:3000'
+      - '127.0.0.1:3000:3000'
     depends_on:
       - db_srv
       - webpack_srv
