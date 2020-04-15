@@ -30,23 +30,46 @@ Flag explanations:
 
 ### 3. Adapt database.yml and webpacker.yml to Docker configuration
 
-Open config/database.yml
+Open and change config/database.yml
 ```
 default: &default
   host: db # <---- add this property
   username: postgres # <---- add this property
+  password: # <---- add this empty property
 ```
 
-Open config/webpacker.yml
+Open and change config/webpacker.yml
 ```
 development:
  (...)
   dev_server:
     https: false
-    host: webpack # <---- change this property, was localhost
+    host: webpack # <---- changed here, value was localhost
     port: 3035
-    public: webpack:3035 # <---- change this property, was localhost:3035
+    public: webpack:3035 # <---- changed here, value was localhost:3035
 ```
+
+### 4. Create hello world page
+
+Run :
+```
+docker-compose run --rm --no-deps web rails generate controller hello say_hello
+```
+
+Flag explanations:
+* **--no-deps** - Tells `docker-compose run` not to start any of the services in `depends_on`.
+* **--rm** - Removes container after run
+
+### 5. Start services
+
+```
+docker-compose up
+```
+
+### 6. Visit "hello world" page
+
+go to http://localhost:3000/hello/say_hello
+
 
 ## Restart from scratch
 
