@@ -31,7 +31,7 @@ docker-compose build
 
 Run :
 ```
-docker-compose run --no-deps web rails new . --skip --database=postgresql
+docker-compose run --rm --no-deps web rails new . --skip --database=postgresql
 ```
 
 This will run the `rails new` command on our `web` service defined in docker-compose.yml.
@@ -40,15 +40,15 @@ Flag explanations:
 * **--no-deps** - Tells `docker-compose run` not to start any of the services in `depends_on`.
 * **--skip** - Tells rails NOT to overwrite existing files, such as README or .gitignore
 * **--database=postgresql** - Tells Rails to default our db config to use postgres.
+* **--rm** - Removes container after run
 
 ### 3. Adapt database.yml and webpacker.yml to Docker configuration
 
 Open and change config/database.yml
 ```
 default: &default
-  host: db # <---- add this property
-  username: postgres # <---- add this property
-  password: # <---- add this empty property
+  host: db_srv # <---- add this property
+  username: myuser # <---- add this property
 ```
 
 Open and change config/webpacker.yml
@@ -57,9 +57,9 @@ development:
  (...)
   dev_server:
     https: false
-    host: webpack # <---- changed here, value was localhost
+    host: webpack_srv # <---- changed here, value was localhost
     port: 3035
-    public: webpack:3035 # <---- changed here, value was localhost:3035
+    public: webpack_srv:3035 # <---- changed here, value was localhost:3035
 ```
 
 ### 4. Create hello world page
