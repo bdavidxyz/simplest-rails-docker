@@ -9,7 +9,7 @@ RUN apt-get update -qq \
 
 # Add PostgreSQL to sources list
 RUN curl -sSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' $PG_MAJOR > /etc/apt/sources.list.d/pgdg.list
+  && echo 'deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main' 12 > /etc/apt/sources.list.d/pgdg.list
 
 # Add NodeJS to sources list
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
@@ -21,9 +21,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 # Install dependencies
 RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -yq dist-upgrade && \
   DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
-    libpq-dev postgresql-client-12 nodejs vim yarn=1.22.4-1 \
+    libpq-dev postgresql-client-12 nodejs vim yarn=1.22.4-1 && \
     apt-get clean && \
-    rm -rf /var/cache/apt/archives/* \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     truncate -s 0 /var/log/*log
 

@@ -3,7 +3,7 @@ version: '2.2'
 services:
 
   db:
-    image: postgres
+    image: postgres:12.1
     volumes:
       - pgdata:/var/lib/postgresql/data
       - '.dockerdev/init.sql:/docker-entrypoint-initdb.d/init.sql'
