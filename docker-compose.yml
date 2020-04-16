@@ -19,7 +19,6 @@ services:
       - '.:/railsapp'
       - bundle:/usr/local/bundle
       - node_modules:/railsapp/node_modules
-      # - apptmp:/railsapp/tmp
     ports:
       - '3035:3035'
 
@@ -31,7 +30,6 @@ services:
       - bundle:/usr/local/bundle
       - node_modules:/railsapp/node_modules
       - .dockerdev/.bashrc:/root/.bashrc:ro
-      # - apptmp:/railsapp/tmp
     ports:
       - '127.0.0.1:3000:3000'
     depends_on:
@@ -42,4 +40,3 @@ volumes:
   bundle:
   pgdata:
   node_modules:
-  # apptmp:
