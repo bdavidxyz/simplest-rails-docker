@@ -7,7 +7,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - '.dockerdev/init.sql:/docker-entrypoint-initdb.d/init.sql'
-      - bundle:/usr/local/bundle
     ports:
       - '5432:5432'
     environment:
@@ -29,7 +28,7 @@ services:
     volumes:
       - '.:/railsapp'
       - bundle:/usr/local/bundle
-      - node_modules:/app/node_modules
+      - node_modules:/railsapp/node_modules
     ports:
       - '127.0.0.1:3000:3000'
     depends_on:
