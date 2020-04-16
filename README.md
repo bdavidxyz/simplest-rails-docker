@@ -51,17 +51,6 @@ default: &default
   username: myuser # <---- add this property
 ```
 
-Open and change config/webpacker.yml
-```
-development:
- (...)
-  dev_server:
-    https: false
-    host: webpack_srv # <---- changed here, value was localhost
-    port: 3035
-    public: webpack_srv:3035 # <---- changed here, value was localhost:3035
-```
-
 ### 4. Create hello world page
 
 Run :
@@ -83,6 +72,8 @@ docker-compose up
 
 go to http://localhost:3000/hello/say_hello
 
+!!! Important !!! Open the browser console to check that CSS, JS loaded correctly and no 404 occured
+Check also the logs of the services in your terminal to notice that no error occured.
 
 ## Restart from scratch
 
