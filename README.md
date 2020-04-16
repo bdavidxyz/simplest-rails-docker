@@ -1,10 +1,10 @@
 # Simplest possible Rails 6 + docker-compose project
 
-This repository is intended to be the simplest possible Rails 6 + Docker demo.
+This repository is intended to be the simplest possible Rails 6 + docker-compose demo.
 
-It tries to build and run a simple "hello" page locally.
+It builds and runs a simple "hello" page locally.
 
-Rails, Database and webpacker are the 3 mandatory services to get things works.
+Rails, Database and Webpacker are the 3 mandatory services to get things works.
 
 ## Steps to reproduce
 
