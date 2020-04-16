@@ -72,8 +72,8 @@ docker-compose up
 
 go to http://localhost:3000/hello/say_hello
 
-!!! Important !!! Open the browser console to check that CSS, JS loaded correctly and no 404 occured
-Check also the logs of the services in your terminal to notice that no error occured.
+ - Open the browser console to check that CSS, JS loaded correctly and no 404 request occured.
+ - Check also the logs of the services in your terminal to notice that no error occured.
 
 ## Restart from scratch
 
