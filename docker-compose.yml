@@ -2,7 +2,7 @@ version: '2.2'
 
 services:
 
-  db_srv:
+  db-srv:
     image: postgres:11.1
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -12,17 +12,19 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
 
-  webpack_srv:
+  webpack-srv:
     build: .
-    command: ./bin/webpack-dev-server --inline true
+    command:  bash -c "rm -rf /railsapp/public/packs; /railsapp/bin/webpack-dev-server"
     volumes:
       - '.:/railsapp'
       - bundle:/usr/local/bundle
       - node_modules:/railsapp/node_modules
     ports:
       - '3035:3035'
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
 
-  web_srv:
+  web-srv:
     build: .
     command: bash -c "rm -rf /railsapp/tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
     volumes:
@@ -32,8 +34,10 @@ services:
     ports:
       - '127.0.0.1:3000:3000'
     depends_on:
-      - db_srv
-      - webpack_srv
+      - db-srv
+      - webpack-srv
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpack-srv
 
 volumes:
   bundle:

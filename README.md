@@ -31,10 +31,10 @@ docker-compose build
 
 Run :
 ```
-docker-compose run --rm --no-deps web_srv rails new . --skip --database=postgresql
+docker-compose run --rm --no-deps web-srv rails new . --skip --database=postgresql
 ```
 
-This will run the `rails new` command on our `web_srv` service defined in docker-compose.yml.
+This will run the `rails new` command on our `web-srv` service defined in docker-compose.yml.
 
 Flag explanations:
 * **--no-deps** - Tells `docker-compose run` not to start any of the services in `depends_on`.
@@ -47,7 +47,7 @@ Flag explanations:
 Open and change config/database.yml
 ```
 default: &default
-  host: db_srv # <---- add this property
+  host: db-srv # <---- add this property
   username: myuser # <---- add this property
 ```
 
@@ -55,7 +55,7 @@ default: &default
 
 Run :
 ```
-docker-compose run --rm --no-deps web_srv rails generate controller hello say_hello
+docker-compose run --rm --no-deps web-srv rails generate controller hello say_hello
 ``` 
 
 Flag explanations:
