@@ -47,7 +47,7 @@ Flag explanations:
 Open and change config/database.yml
 ```
 default: &default
-  host: db-srv # <---- add this property
+  host: db # <---- add this property
   username: myuser # <---- add this property
 ```
 
